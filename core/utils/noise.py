@@ -10,14 +10,14 @@ def random_noise(frames, input_length, corruption_ratio=0.1):
     corruption_ratio: float in [0, 1]
     """
     corrupted = frames.copy()
-    N, H, W = corrupted.shape
+    N, H, W, C = corrupted.shape
     num_pixels = H * W
     num_to_corrupt = int(num_pixels * corruption_ratio)
 
     for i in range(input_length):
         indices = np.random.choice(num_pixels, num_to_corrupt, replace=False)
         y_coords, x_coords = np.unravel_index(indices, (H, W))
-        corrupted[i, y_coords, x_coords] = 0
+        corrupted[i, :, y_coords, x_coords] = 0
     return corrupted
 
 def rows_noise(frames, input_length, corruption_ratio=0.1):
@@ -28,14 +28,14 @@ def rows_noise(frames, input_length, corruption_ratio=0.1):
     corruption_ratio: float in [0, 1] - percentage of rows to corrupt
     """
     corrupted = frames.copy()
-    N, H, W = corrupted.shape
+    N, H, W, C = corrupted.shape
     num_rows_to_corrupt = int(H * corruption_ratio)
 
     for i in range(input_length):
         # Randomly select which rows to corrupt
         row_indices = np.random.choice(H, num_rows_to_corrupt, replace=False)
         # Zero out the selected rows
-        corrupted[i, row_indices, :] = 0
+        corrupted[i, row_indices, :, :] = 0
 
     return corrupted
 
@@ -48,7 +48,7 @@ def blocks_noise(frames, input_length, corruption_ratio=0.1, block_size=10):
     block_size: int - size of square blocks to corrupt (default 2 for 2x2 blocks)
     """
     corrupted = frames.copy()
-    N, H, W = corrupted.shape
+    N, C, H, W = corrupted.shape
 
     # Calculate how many blocks we can fit in each dimension
     blocks_per_row = H // block_size
@@ -74,6 +74,6 @@ def blocks_noise(frames, input_length, corruption_ratio=0.1, block_size=10):
             block_col = (block_idx % blocks_per_col) * block_size
 
             # Zero out the block
-            corrupted[i, block_row:block_row+block_size, block_col:block_col+block_size] = 0
+            corrupted[i, :, block_row:block_row+block_size, block_col:block_col+block_size] = 0
 
     return corrupted
