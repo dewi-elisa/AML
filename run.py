@@ -27,6 +27,9 @@ parser.add_argument('--input_length', type=int, default=10)
 parser.add_argument('--total_length', type=int, default=20)
 parser.add_argument('--img_width', type=int, default=64)
 parser.add_argument('--img_channel', type=int, default=1)
+parser.add_argument('--noise', type=str, default=None)
+parser.add_argument('--noise_ratio', type=float, default=0.1)
+parser.add_argument('--noise_size', type=int, default=10)
 
 # model
 parser.add_argument('--model_name', type=str, default='predrnn')
@@ -173,7 +176,8 @@ def train_wrapper(model):
     # load data
     train_input_handle, test_input_handle = datasets_factory.data_provider(
         args.dataset_name, args.train_data_paths, args.valid_data_paths, args.batch_size, args.img_width,
-        seq_length=args.total_length, injection_action=args.injection_action, is_training=True)
+        seq_length=args.total_length, injection_action=args.injection_action, noise=args.noise,
+        noise_ratio=args.noise_ratio, noise_size=args.noise_size, input_length=args.input_length, is_training=True)
 
     eta = args.sampling_start_value
 
@@ -203,7 +207,8 @@ def test_wrapper(model):
     model.load(args.pretrained_model)
     test_input_handle = datasets_factory.data_provider(
         args.dataset_name, args.train_data_paths, args.valid_data_paths, args.batch_size, args.img_width,
-        seq_length=args.total_length, injection_action=args.injection_action, is_training=False)
+        seq_length=args.total_length, injection_action=args.injection_action, noise=args.noise,
+        noise_ratio=args.noise_ratio, noise_size=args.noise_size, input_length=args.input_length, is_training=False)
     trainer.test(model, test_input_handle, args, 'test_result')
 
 
