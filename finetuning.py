@@ -109,6 +109,8 @@ trainable = [p for p in model.network.parameters() if p.requires_grad]
 if trainable == []:
     print('No existing layer found to fine-tune')
     sys.exit()
+else:
+    print(f'Updating the following parameters: {trainable}')
 
 # train the layer
 model.optimizer = torch.optim.Adam(trainable, lr=args.lr)
