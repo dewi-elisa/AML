@@ -74,10 +74,6 @@ parser.add_argument('--num_action_ch', type=int, default=4, help='num action ch'
 args = parser.parse_args()
 print(args)
 
-if args.layer is None:
-    print('No layer given to fine-tune.')
-    sys.exit()
-
 # load data
 train_input_handle, test_input_handle = datasets_factory.data_provider(
     args.dataset_name, args.train_data_paths, args.valid_data_paths, args.batch_size, args.img_width,
@@ -96,6 +92,10 @@ print('model parameters:')
 for name, param in model.network.named_parameters():
     if param.requires_grad:
         print(name)#)
+
+if args.layer is None:
+    print('No layer given to fine-tune.')
+    sys.exit()
 
 # only choose parameters from one layer
 for name, p in model.network.named_parameters():
