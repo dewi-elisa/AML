@@ -10,7 +10,7 @@ from core.models.model_factory import Model
 from core.utils import preprocess
 import core.trainer as trainer
 
-def reserve_schedule_sampling_exp(itr):
+def reserve_schedule_sampling_exp(itr, args):
     if itr < args.r_sampling_step_1:
         r_eta = 0.5
     elif itr < args.r_sampling_step_2:
@@ -64,7 +64,7 @@ def reserve_schedule_sampling_exp(itr):
     return real_input_flag
 
 
-def schedule_sampling(eta, itr):
+def schedule_sampling(eta, itr, args):
     zeros = np.zeros((args.batch_size,
                       args.total_length - args.input_length - 1,
                       args.img_width // args.patch_size,
@@ -103,7 +103,7 @@ def schedule_sampling(eta, itr):
     return eta, real_input_flag
 
 
-def train_wrapper(model):
+def train_wrapper(model, args):
     if args.pretrained_model:
         model.load(args.pretrained_model)
     # load data
@@ -121,9 +121,9 @@ def train_wrapper(model):
         ims = preprocess.reshape_patch(ims, args.patch_size)
 
         if args.reverse_scheduled_sampling == 1:
-            real_input_flag = reserve_schedule_sampling_exp(itr)
+            real_input_flag = reserve_schedule_sampling_exp(itr, args)
         else:
-            eta, real_input_flag = schedule_sampling(eta, itr)
+            eta, real_input_flag = schedule_sampling(eta, itr, args)
 
         trainer.train(model, ims, real_input_flag, args, itr)
 
@@ -136,7 +136,7 @@ def train_wrapper(model):
         train_input_handle.next()
 
 
-def test_wrapper(model):
+def test_wrapper(model, args):
     model.load(args.pretrained_model)
     test_input_handle = datasets_factory.data_provider(
         args.dataset_name, args.train_data_paths, args.valid_data_paths, args.batch_size, args.img_width,
@@ -224,6 +224,6 @@ if __name__ == "__main__":
     model = Model(args)
 
     if args.is_training:
-        train_wrapper(model)
+        train_wrapper(model, args)
     else:
-        test_wrapper(model)
+        test_wrapper(model, args)

@@ -5,14 +5,14 @@ from core.data_provider import datasets_factory
 from core.models.model_factory import Model
 from core.utils import preprocess
 import core.trainer as trainer
-from run import schedule_sampling, reserve_schedule_sampling_exp
+from run import schedule_sampling, reserve_schedule_sampling_exp, test_wrapper
 import sys
 
 parser = argparse.ArgumentParser(description='PyTorch video prediction model - PredRNN')
 
 # training/test
 parser.add_argument('--is_training', type=int, default=1)
-parser.add_argument('--parameters', type=list, default=None)
+parser.add_argument('--parameters', type=str, default=None)
 parser.add_argument('--device', type=str, default='cpu:0')
 
 # data
@@ -72,6 +72,8 @@ parser.add_argument('--res_on_conv', type=int, default=0, help='res on conv')
 parser.add_argument('--num_action_ch', type=int, default=4, help='num action ch')
 
 args = parser.parse_args()
+if args.parameters is not None:
+    args.parameters = args.parameters.split(",")
 print(args)
 
 # load data
@@ -84,23 +86,26 @@ train_input_handle, test_input_handle = datasets_factory.data_provider(
 model = Model(args)
 model.load(args.pretrained_model)
 
-# print model
-print(model.network)
-
-# print model parameters
-print('model parameters:')
-for name, param in model.network.named_parameters():
-    if param.requires_grad:
-        print(name)#)
-
 if args.parameters is None:
-    print('No parameters given to fine-tune.')
+    print('No parameters given to fine-tune. Maybe you can look at the model and its parameters.')
+    
+    # print model
+    print('\nmodel:')
+    print(model.network)
+
+    # print model parameters
+    print('\nmodel parameters:')
+    for name, param in model.network.named_parameters():
+        if param.requires_grad:
+            print(name)
     sys.exit()
 
 # only choose parameters given
+trainable_names = []
 for name, p in model.network.named_parameters():
     if name in args.parameters:      # keep learning
         p.requires_grad = True
+        trainable_names.append(name)
     else:                            # freeze
         p.requires_grad = False
 
@@ -110,7 +115,7 @@ if trainable == []:
     print('No existing parameters found to fine-tune')
     sys.exit()
 else:
-    print(f'Updating the following parameters: {trainable}')
+    print(f'Updating {len(trainable)} parameter(s): {trainable_names}')
 
 # train the layer
 model.optimizer = torch.optim.Adam(trainable, lr=args.lr)
@@ -124,9 +129,9 @@ for itr in range(1, args.max_iterations + 1):
     ims = preprocess.reshape_patch(ims, args.patch_size)
 
     if args.reverse_scheduled_sampling == 1:
-        real_input_flag = reserve_schedule_sampling_exp(itr)
+        real_input_flag = reserve_schedule_sampling_exp(itr, args)
     else:
-        eta, real_input_flag = schedule_sampling(eta, itr)
+        eta, real_input_flag = schedule_sampling(eta, itr, args)
 
     trainer.train(model, ims, real_input_flag, args, itr)
 
@@ -138,5 +143,8 @@ for itr in range(1, args.max_iterations + 1):
 
     train_input_handle.next()
 
+# test the model
+test_wrapper(model, args)
+
 # save model
-model.save(itr)
+model.save(itr, args.noise)
