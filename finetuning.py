@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='PyTorch video prediction model - P
 
 # training/test
 parser.add_argument('--is_training', type=int, default=1)
-parser.add_argument('--layer', type=str, default=None)
+parser.add_argument('--parameters', type=list, default=None)
 parser.add_argument('--device', type=str, default='cpu:0')
 
 # data
@@ -93,13 +93,13 @@ for name, param in model.network.named_parameters():
     if param.requires_grad:
         print(name)#)
 
-if args.layer is None:
-    print('No layer given to fine-tune.')
+if args.parameters is None:
+    print('No parameters given to fine-tune.')
     sys.exit()
 
-# only choose parameters from one layer
+# only choose parameters given
 for name, p in model.network.named_parameters():
-    if args.layer in name:          # keep learning
+    if name in args.parameters:      # keep learning
         p.requires_grad = True
     else:                            # freeze
         p.requires_grad = False
@@ -107,7 +107,7 @@ for name, p in model.network.named_parameters():
 trainable = [p for p in model.network.parameters() if p.requires_grad]
 
 if trainable == []:
-    print('No existing layer found to fine-tune')
+    print('No existing parameters found to fine-tune')
     sys.exit()
 else:
     print(f'Updating the following parameters: {trainable}')
