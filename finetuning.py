@@ -147,4 +147,7 @@ for itr in range(1, args.max_iterations + 1):
 test_wrapper(model, args)
 
 # save model
-model.save(itr, args.noise)
+if args.noise == 'blocks':
+    model.save(itr, args.noise, args.noise_size)
+else:
+    model.save(itr, args.noise)
