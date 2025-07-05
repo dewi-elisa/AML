@@ -1,3 +1,470 @@
 python -u run.py --is_training 0 --device cuda --dataset_name mnist --train_data_paths C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz --valid_data_paths C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz --save_dir checkpoints/mnist_predrnn_v2 --gen_frm_dir results/mnist_predrnn_v2 --model_name predrnn_v2 --reverse_input 1 --img_width 64 --img_channel 1 --input_length 10 --total_length 20 --num_hidden 128,128,128,128 --filter_size 5 --stride 1 --patch_size 4 --layer_norm 0 --decouple_beta 0.1 --reverse_scheduled_sampling 1 --r_sampling_step_1 25000 --r_sampling_step_2 50000 --r_exp_alpha 2500 --lr 0.0001 --batch_size 8 --max_iterations 80000 --display_interval 100 --test_interval 5000 --snapshot_interval 5000 --pretrained_model ./checkpointss/mnist_predrnn_v2/mnist_model.ckpt
 
 python -u finetuning.py --is_training 1 --device cuda --dataset_name mnist --train_data_paths C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz --valid_data_paths C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz --save_dir checkpoints_finetuning/mnist_predrnn_v2 --gen_frm_dir results_finetuning/random --model_name predrnn_v2 --reverse_input 1 --img_width 64 --img_channel 1 --noise random --parameters conv_last.weight --input_length 10 --total_length 20 --num_hidden 128,128,128,128 --filter_size 5 --stride 1 --patch_size 4 --layer_norm 0 --decouple_beta 0.1 --reverse_scheduled_sampling 1 --r_sampling_step_1 25000 --r_sampling_step_2 50000 --r_exp_alpha 2500 --lr 0.0001 --batch_size 8 --max_iterations 80000 --display_interval 100 --test_interval 5000 --snapshot_interval 5000 --pretrained_model ./checkpointss/mnist_predrnn_v2/mnist_model.ckpt
+
+
+
+$ conda run -n DewiAML bash finetuning.sh
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/test', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise=None, noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpointss/mnist_predrnn_v2/mnist_model.ckpt', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpointss/mnist_predrnn_v2/mnist_model.ckpt
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-05 00:54:43 test...
+mse per seq: 484.31820828136915
+21.810054121170452
+27.579730467362836
+33.94651919380229
+39.81333342465487
+46.34051470833029
+52.019265200365034
+57.950162816175165
+63.09327750792478
+68.47776618998319
+73.28758465160023
+ssim per frame: 0.8912495
+0.9436186
+0.9320422
+0.92001766
+0.9090185
+0.89671075
+0.8853742
+0.8730681
+0.8618737
+0.85049635
+0.8402752
+psnr per frame: 20.064123
+23.213974
+22.230696
+21.33689
+20.651398
+19.998505
+19.49335
+18.997564
+18.590698
+18.217363
+17.910795
+lpips per frame: 0.07065487
+0.036374897
+0.0435452
+0.050030496
+0.056496155
+0.06374453
+0.07216615
+0.081186526
+0.091246344
+0.1014812
+0.11027717
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/random', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='random', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpointss/mnist_predrnn_v2/mnist_model.ckpt', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpointss/mnist_predrnn_v2/mnist_model.ckpt
+Updating 1 parameter(s): ['conv_last.weight']
+2025-07-05 01:00:22 itr: 100
+training loss: 0.0259556844830513
+2025-07-05 01:02:29 itr: 200
+training loss: 0.025630421936511993
+2025-07-05 01:04:36 itr: 300
+training loss: 0.02452962100505829
+2025-07-05 01:06:43 itr: 400
+training loss: 0.029197432100772858
+2025-07-05 01:08:52 itr: 500
+training loss: 0.02414150908589363
+2025-07-05 01:11:00 itr: 600
+training loss: 0.025370193645358086
+2025-07-05 01:13:08 itr: 700
+training loss: 0.02604786492884159
+2025-07-05 01:15:16 itr: 800
+training loss: 0.02573223039507866
+2025-07-05 01:17:23 itr: 900
+training loss: 0.025727417320013046
+2025-07-05 01:19:30 itr: 1000
+training loss: 0.02603789046406746
+2025-07-05 01:21:38 itr: 1100
+training loss: 0.02795318514108658
+2025-07-05 01:23:46 itr: 1200
+training loss: 0.02395755797624588
+2025-07-05 01:25:52 itr: 1300
+training loss: 0.025228578597307205
+2025-07-05 01:27:57 itr: 1400
+training loss: 0.023367032408714294
+2025-07-05 01:30:04 itr: 1500
+training loss: 0.025397535413503647
+2025-07-05 01:32:11 itr: 1600
+training loss: 0.0271662175655365
+2025-07-05 01:34:15 itr: 1700
+training loss: 0.025313707068562508
+2025-07-05 01:36:20 itr: 1800
+training loss: 0.025825021788477898
+2025-07-05 01:38:24 itr: 1900
+training loss: 0.02891201712191105
+2025-07-05 01:40:29 itr: 2000
+training loss: 0.02742510661482811
+2025-07-05 01:42:33 itr: 2100
+training loss: 0.026676587760448456
+2025-07-05 01:44:38 itr: 2200
+training loss: 0.02780378982424736
+2025-07-05 01:46:42 itr: 2300
+training loss: 0.024946248158812523
+2025-07-05 01:48:47 itr: 2400
+training loss: 0.024258341640233994
+2025-07-05 01:50:51 itr: 2500
+training loss: 0.02729128673672676
+2025-07-05 01:52:55 itr: 2600
+training loss: 0.025296829640865326
+2025-07-05 01:55:00 itr: 2700
+training loss: 0.02568702958524227
+2025-07-05 01:57:04 itr: 2800
+training loss: 0.023628532886505127
+2025-07-05 01:59:08 itr: 2900
+training loss: 0.025862205773591995
+2025-07-05 02:01:13 itr: 3000
+training loss: 0.02406216226518154
+2025-07-05 02:03:17 itr: 3100
+training loss: 0.022936156019568443
+2025-07-05 02:05:21 itr: 3200
+training loss: 0.024501778185367584
+2025-07-05 02:07:26 itr: 3300
+training loss: 0.024272466078400612
+2025-07-05 02:09:30 itr: 3400
+training loss: 0.02643725834786892
+2025-07-05 02:11:35 itr: 3500
+training loss: 0.024923862889409065
+2025-07-05 02:13:39 itr: 3600
+training loss: 0.026355233043432236
+2025-07-05 02:15:43 itr: 3700
+training loss: 0.025348175317049026
+2025-07-05 02:17:47 itr: 3800
+training loss: 0.025105223059654236
+2025-07-05 02:19:52 itr: 3900
+training loss: 0.026073431596159935
+2025-07-05 02:21:56 itr: 4000
+training loss: 0.025525839999318123
+2025-07-05 02:24:00 itr: 4100
+training loss: 0.026148652657866478
+2025-07-05 02:26:04 itr: 4200
+training loss: 0.024499353021383286
+2025-07-05 02:28:08 itr: 4300
+training loss: 0.025740621611475945
+2025-07-05 02:30:12 itr: 4400
+training loss: 0.024358533322811127
+2025-07-05 02:32:17 itr: 4500
+training loss: 0.02466508373618126
+2025-07-05 02:34:21 itr: 4600
+training loss: 0.02376832626760006
+2025-07-05 02:36:25 itr: 4700
+training loss: 0.02575382962822914
+2025-07-05 02:38:29 itr: 4800
+training loss: 0.024121426045894623
+2025-07-05 02:40:34 itr: 4900
+training loss: 0.025285709649324417
+2025-07-05 02:42:38 itr: 5000
+training loss: 0.025181874632835388
+save model to checkpoints_finetuning/mnist_predrnn_v2\model.ckpt-5000-None
+2025-07-05 02:42:38 test...
+mse per seq: 487.254640788318
+24.006959384775417
+29.456535298556567
+35.46481602204675
+40.909685007391126
+46.87378855312572
+52.11089277012463
+57.65084745029715
+62.12639695437834
+67.08992729595
+71.5647920516723
+ssim per frame: 0.8835419
+0.9390055
+0.92728615
+0.91511995
+0.9039745
+0.8914596
+0.87907815
+0.864937
+0.8518493
+0.8378238
+0.82488483
+psnr per frame: 19.906712
+22.672104
+21.835205
+21.058327
+20.448334
+19.870378
+19.40508
+18.94999
+18.602976
+18.254375
+17.970354
+lpips per frame: 0.07809837
+0.040667694
+0.04781803
+0.054503605
+0.06109381
+0.06924333
+0.07877381
+0.08947707
+0.10151688
+0.113466844
+0.12442266
+2025-07-05 02:47:49 itr: 5100
+training loss: 0.02467902936041355
+2025-07-05 02:49:53 itr: 5200
+training loss: 0.027768507599830627
+2025-07-05 02:51:58 itr: 5300
+training loss: 0.027638744562864304
+2025-07-05 02:54:02 itr: 5400
+training loss: 0.024773187935352325
+2025-07-05 02:56:06 itr: 5500
+training loss: 0.024581747129559517
+2025-07-05 02:58:10 itr: 5600
+training loss: 0.026155300438404083
+2025-07-05 03:00:14 itr: 5700
+training loss: 0.026162682101130486
+2025-07-05 03:02:18 itr: 5800
+training loss: 0.0249193012714386
+2025-07-05 03:04:22 itr: 5900
+training loss: 0.025425242260098457
+2025-07-05 03:06:26 itr: 6000
+training loss: 0.025883518159389496
+2025-07-05 03:08:30 itr: 6100
+training loss: 0.02580397017300129
+2025-07-05 03:10:35 itr: 6200
+training loss: 0.025292107835412025
+2025-07-05 03:12:39 itr: 6300
+training loss: 0.02474837750196457
+2025-07-05 03:14:43 itr: 6400
+training loss: 0.02685711719095707
+2025-07-05 03:16:47 itr: 6500
+training loss: 0.02514154091477394
+2025-07-05 03:18:51 itr: 6600
+training loss: 0.025218185037374496
+2025-07-05 03:20:55 itr: 6700
+training loss: 0.023657478392124176
+2025-07-05 03:22:59 itr: 6800
+training loss: 0.026365380734205246
+2025-07-05 03:25:03 itr: 6900
+training loss: 0.024636337533593178
+2025-07-05 03:27:07 itr: 7000
+training loss: 0.024838285520672798
+2025-07-05 03:29:12 itr: 7100
+training loss: 0.027159273624420166
+2025-07-05 03:31:16 itr: 7200
+training loss: 0.027626367285847664
+2025-07-05 03:33:20 itr: 7300
+training loss: 0.023851938545703888
+2025-07-05 03:35:24 itr: 7400
+training loss: 0.025948233902454376
+2025-07-05 03:37:28 itr: 7500
+training loss: 0.02565561980009079
+2025-07-05 03:39:32 itr: 7600
+training loss: 0.024984031915664673
+2025-07-05 03:41:37 itr: 7700
+training loss: 0.025854839012026787
+2025-07-05 03:43:41 itr: 7800
+training loss: 0.024873705580830574
+2025-07-05 03:45:45 itr: 7900
+training loss: 0.02605515904724598
+2025-07-05 03:47:49 itr: 8000
+training loss: 0.024608882144093513
+load model: ./checkpointss/mnist_predrnn_v2/mnist_model.ckpt
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-05 03:47:52 test...
+mse per seq: 506.31370318509676
+24.32166474388245
+30.16112856431441
+36.50714993094378
+42.2849257923065
+48.794208195120255
+54.21634203864929
+60.04811331805061
+64.99595323858414
+70.19357604776474
+74.7906413154806
+ssim per frame: 0.8874405
+0.93982536
+0.92812914
+0.91597366
+0.90509194
+0.8926721
+0.8815604
+0.86921376
+0.8581882
+0.84691346
+0.8368372
+psnr per frame: 19.77305
+22.649254
+21.764736
+20.950434
+20.327085
+19.72008
+19.259075
+18.789812
+18.417952
+18.067354
+17.784708
+lpips per frame: 0.06869142
+0.034695975
+0.04145632
+0.047892775
+0.054277472
+0.06159282
+0.06984168
+0.07917579
+0.0892943
+0.09980128
+0.10888578
+save model to checkpoints_finetuning/mnist_predrnn_v2\model.ckpt-8000-random
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_22', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=2, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-random', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-random
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/rows', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='rows', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks22', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks22
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_55', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=5, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-rows', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-rows
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_1010', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks55', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks55
+
+2025-07-05 00:54:36.444027: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 00:54:36.444276: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\nn\functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  ..\c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+2025-07-05 00:57:58.175364: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 00:57:58.175582: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\nn\functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  ..\c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+2025-07-05 03:51:07.981529: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 03:51:07.981772: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "finetuning.py", line 87, in <module>
+    model.load(args.pretrained_model)
+  File "C:\Users\twank\Documents\Dewi\AML\core\models\model_factory.py", line 35, in load
+    stats = torch.load(checkpoint_path)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 594, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: './checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-random'
+2025-07-05 03:51:25.699249: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 03:51:25.699446: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "finetuning.py", line 87, in <module>
+    model.load(args.pretrained_model)
+  File "C:\Users\twank\Documents\Dewi\AML\core\models\model_factory.py", line 35, in load
+    stats = torch.load(checkpoint_path)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 594, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: './checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks22'
+2025-07-05 03:51:44.086557: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 03:51:44.086782: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "finetuning.py", line 87, in <module>
+    model.load(args.pretrained_model)
+  File "C:\Users\twank\Documents\Dewi\AML\core\models\model_factory.py", line 35, in load
+    stats = torch.load(checkpoint_path)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 594, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: './checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-rows'
+2025-07-05 03:52:00.582884: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2025-07-05 03:52:00.583074: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "finetuning.py", line 87, in <module>
+    model.load(args.pretrained_model)
+  File "C:\Users\twank\Documents\Dewi\AML\core\models\model_factory.py", line 35, in load
+    stats = torch.load(checkpoint_path)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 594, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\torch\serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: './checkpoints_finetuning/mnist_predrnn_v2/mnist_model.ckpt-8000-blocks55'
+
+ERROR conda.cli.main_run:execute(125): `conda run bash finetuning.sh` failed. (See above for error)
