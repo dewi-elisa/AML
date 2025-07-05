@@ -117,7 +117,7 @@ if trainable == []:
 else:
     print(f'Updating {len(trainable)} parameter(s): {trainable_names}')
 
-# train the layer
+# train the parameter
 model.optimizer = torch.optim.Adam(trainable, lr=args.lr)
 
 eta = args.sampling_start_value
