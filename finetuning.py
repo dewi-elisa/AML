@@ -144,7 +144,11 @@ for itr in range(1, args.max_iterations + 1):
     train_input_handle.next()
 
 # test the model
-test_wrapper(model, args)
+test_input_handle = datasets_factory.data_provider(
+        args.dataset_name, args.train_data_paths, args.valid_data_paths, args.batch_size, args.img_width,
+        seq_length=args.total_length, injection_action=args.injection_action, noise=args.noise,
+        noise_ratio=args.noise_ratio, noise_size=args.noise_size, input_length=args.input_length, is_training=False)
+trainer.test(model, test_input_handle, args, 'test_result')
 
 # save model
 if args.noise == 'blocks':
