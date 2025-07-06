@@ -1,0 +1,566 @@
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_1010', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks5', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=10000, stride=1, test_interval=10000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks5
+Updating 1 parameter(s): ['conv_last.weight']
+2025-07-06 09:31:55 itr: 100
+training loss: 0.027178559452295303
+2025-07-06 09:34:01 itr: 200
+training loss: 0.02804892510175705
+2025-07-06 09:36:07 itr: 300
+training loss: 0.02851065807044506
+2025-07-06 09:38:14 itr: 400
+training loss: 0.02874213457107544
+2025-07-06 09:40:20 itr: 500
+training loss: 0.028669973835349083
+2025-07-06 09:42:27 itr: 600
+training loss: 0.02740348130464554
+2025-07-06 09:44:33 itr: 700
+training loss: 0.028355609625577927
+2025-07-06 09:46:39 itr: 800
+training loss: 0.027228564023971558
+2025-07-06 09:48:44 itr: 900
+training loss: 0.029004119336605072
+2025-07-06 09:50:51 itr: 1000
+training loss: 0.026981759816408157
+2025-07-06 09:52:58 itr: 1100
+training loss: 0.026251396164298058
+2025-07-06 09:55:03 itr: 1200
+training loss: 0.02887784130871296
+2025-07-06 09:57:07 itr: 1300
+training loss: 0.028087904676795006
+2025-07-06 09:59:11 itr: 1400
+training loss: 0.027392089366912842
+2025-07-06 10:01:14 itr: 1500
+training loss: 0.02860340289771557
+2025-07-06 10:03:22 itr: 1600
+training loss: 0.026279088109731674
+2025-07-06 10:05:30 itr: 1700
+training loss: 0.026421237736940384
+2025-07-06 10:07:38 itr: 1800
+training loss: 0.028313441202044487
+2025-07-06 10:09:45 itr: 1900
+training loss: 0.026801520958542824
+2025-07-06 10:11:51 itr: 2000
+training loss: 0.027718402445316315
+2025-07-06 10:13:59 itr: 2100
+training loss: 0.027964074164628983
+2025-07-06 10:16:07 itr: 2200
+training loss: 0.02691073715686798
+2025-07-06 10:18:14 itr: 2300
+training loss: 0.02599862962961197
+2025-07-06 10:20:23 itr: 2400
+training loss: 0.027388401329517365
+2025-07-06 10:22:31 itr: 2500
+training loss: 0.02783602476119995
+2025-07-06 10:24:38 itr: 2600
+training loss: 0.02786795049905777
+2025-07-06 10:26:44 itr: 2700
+training loss: 0.02560262195765972
+2025-07-06 10:28:51 itr: 2800
+training loss: 0.028850801289081573
+2025-07-06 10:30:57 itr: 2900
+training loss: 0.027144793421030045
+2025-07-06 10:33:05 itr: 3000
+training loss: 0.025082271546125412
+2025-07-06 10:35:12 itr: 3100
+training loss: 0.02855817973613739
+2025-07-06 10:37:16 itr: 3200
+training loss: 0.02708328515291214
+2025-07-06 10:39:20 itr: 3300
+training loss: 0.028222285211086273
+2025-07-06 10:41:24 itr: 3400
+training loss: 0.029147334396839142
+2025-07-06 10:43:29 itr: 3500
+training loss: 0.028312496840953827
+2025-07-06 10:45:33 itr: 3600
+training loss: 0.027355529367923737
+2025-07-06 10:47:37 itr: 3700
+training loss: 0.028002282604575157
+2025-07-06 10:49:40 itr: 3800
+training loss: 0.026280397549271584
+2025-07-06 10:51:44 itr: 3900
+training loss: 0.026155829429626465
+2025-07-06 10:53:48 itr: 4000
+training loss: 0.027512529864907265
+2025-07-06 10:55:52 itr: 4100
+training loss: 0.028012864291667938
+2025-07-06 10:57:55 itr: 4200
+training loss: 0.027246538549661636
+2025-07-06 10:59:59 itr: 4300
+training loss: 0.028792785480618477
+2025-07-06 11:02:03 itr: 4400
+training loss: 0.027807345613837242
+2025-07-06 11:04:07 itr: 4500
+training loss: 0.02688877284526825
+2025-07-06 11:06:11 itr: 4600
+training loss: 0.027881436049938202
+2025-07-06 11:08:14 itr: 4700
+training loss: 0.029231641441583633
+2025-07-06 11:10:18 itr: 4800
+training loss: 0.026391495019197464
+2025-07-06 11:12:22 itr: 4900
+training loss: 0.02870074473321438
+2025-07-06 11:14:26 itr: 5000
+training loss: 0.029202226549386978
+2025-07-06 11:16:30 itr: 5100
+training loss: 0.028527792543172836
+2025-07-06 11:18:34 itr: 5200
+training loss: 0.027144405990839005
+2025-07-06 11:20:37 itr: 5300
+training loss: 0.02809983864426613
+2025-07-06 11:22:41 itr: 5400
+training loss: 0.026993978768587112
+2025-07-06 11:24:45 itr: 5500
+training loss: 0.02995135262608528
+2025-07-06 11:26:49 itr: 5600
+training loss: 0.026766924187541008
+2025-07-06 11:28:53 itr: 5700
+training loss: 0.03035876341164112
+2025-07-06 11:30:56 itr: 5800
+training loss: 0.027968186885118484
+2025-07-06 11:33:00 itr: 5900
+training loss: 0.02758561447262764
+2025-07-06 11:35:04 itr: 6000
+training loss: 0.027039319276809692
+2025-07-06 11:37:08 itr: 6100
+training loss: 0.02803719788789749
+2025-07-06 11:39:12 itr: 6200
+training loss: 0.028722669929265976
+2025-07-06 11:41:15 itr: 6300
+training loss: 0.02613258920609951
+2025-07-06 11:43:19 itr: 6400
+training loss: 0.030563723295927048
+2025-07-06 11:45:18 itr: 6500
+training loss: 0.029329555109143257
+2025-07-06 11:47:22 itr: 6600
+training loss: 0.026608875021338463
+2025-07-06 11:49:26 itr: 6700
+training loss: 0.02641746960580349
+2025-07-06 11:51:29 itr: 6800
+training loss: 0.026399772614240646
+2025-07-06 11:53:33 itr: 6900
+training loss: 0.028240816667675972
+2025-07-06 11:55:37 itr: 7000
+training loss: 0.02749663218855858
+2025-07-06 11:57:41 itr: 7100
+training loss: 0.0296782199293375
+2025-07-06 11:59:45 itr: 7200
+training loss: 0.027591010555624962
+2025-07-06 12:01:48 itr: 7300
+training loss: 0.025763550773262978
+2025-07-06 12:03:52 itr: 7400
+training loss: 0.026586955413222313
+2025-07-06 12:05:59 itr: 7500
+training loss: 0.02757292613387108
+2025-07-06 12:08:05 itr: 7600
+training loss: 0.025921352207660675
+2025-07-06 12:10:12 itr: 7700
+training loss: 0.0274689681828022
+2025-07-06 12:12:20 itr: 7800
+training loss: 0.026061715558171272
+2025-07-06 12:14:28 itr: 7900
+training loss: 0.026457857340574265
+2025-07-06 12:16:35 itr: 8000
+training loss: 0.026298686861991882
+save model to checkpoints_finetuning/mnist_predrnn_v2\model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:16:39 test...
+mse per seq: 757.6327973534079
+40.520554328347274
+50.9344807436122
+60.86879735324472
+69.25714645793731
+76.95321844988328
+82.986073550056
+88.16412024064498
+92.43139993188215
+96.19252163076146
+99.32448466703853
+ssim per frame: 0.82845527
+0.9078917
+0.8868955
+0.8675802
+0.85055095
+0.8334362
+0.8175345
+0.8016785
+0.78684086
+0.7724485
+0.7596964
+psnr per frame: 17.912151
+20.577845
+19.592733
+18.777206
+18.192888
+17.701591
+17.353836
+17.045229
+16.81856
+16.610153
+16.451464
+lpips per frame: 0.12221161
+0.068206415
+0.080082566
+0.09001419
+0.099303626
+0.110868804
+0.12393879
+0.13908675
+0.1540535
+0.17124783
+0.18531367
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/test_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise=None, noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:20:10 test...
+mse per seq: 465.5283449193373
+22.16619880696669
+27.61624842149051
+33.45641115259997
+38.81746134528502
+44.732681896597306
+49.943033452977474
+55.24843999281286
+59.8628895295495
+64.70409021020573
+68.98089011085224
+ssim per frame: 0.8784224
+0.93888587
+0.92613375
+0.91350144
+0.9014936
+0.88776547
+0.8739012
+0.8583786
+0.8432116
+0.8276336
+0.81331843
+psnr per frame: 20.09069
+23.04566
+22.121725
+21.294874
+20.655624
+20.042704
+19.556479
+19.090197
+18.70475
+18.343912
+18.050959
+lpips per frame: 0.0916241
+0.04833024
+0.05706471
+0.064349614
+0.07159863
+0.08060383
+0.09177828
+0.10449708
+0.11852504
+0.13317685
+0.14631677
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/random_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='random', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:23:42 test...
+mse per seq: 492.93500229381624
+24.772625400420818
+30.313934713761437
+36.312578706180346
+41.70193401887455
+47.55468670952129
+52.8341021716276
+58.10445553988696
+62.5903765632507
+67.30490450935568
+71.44540396093684
+ssim per frame: 0.8736583
+0.93508476
+0.9221521
+0.9090922
+0.896861
+0.8828638
+0.8686091
+0.85293144
+0.83795345
+0.82255495
+0.8084801
+psnr per frame: 19.752085
+22.490944
+21.650856
+20.875912
+20.285284
+19.717995
+19.248741
+18.810871
+18.462027
+18.12664
+17.851564
+lpips per frame: 0.09113401
+0.045232106
+0.053826965
+0.061466586
+0.069192074
+0.07902689
+0.09112713
+0.105245434
+0.120061204
+0.13594101
+0.15022066
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/rows_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='rows', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:27:14 test...
+mse per seq: 527.1627784565808
+26.6533644212121
+32.803529754679474
+39.34825053699514
+45.297125750047
+51.384671308140064
+56.681366874572426
+62.097624620651814
+66.6737278209013
+71.13693875807492
+75.08617861130658
+ssim per frame: 0.8675019
+0.9315604
+0.91758525
+0.9035354
+0.8903998
+0.8761168
+0.86184984
+0.84591234
+0.8306717
+0.8155564
+0.80183107
+psnr per frame: 19.466629
+22.19648
+21.337412
+20.557158
+19.942179
+19.399616
+18.957376
+18.537163
+18.194769
+17.894682
+17.649445
+lpips per frame: 0.094323695
+0.04839883
+0.057118993
+0.064991094
+0.07274603
+0.08239885
+0.09441464
+0.10858495
+0.12306006
+0.13876137
+0.15276219
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_22_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=2, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:30:38 test...
+mse per seq: 520.7863500105506
+26.959113799314448
+32.67683372395561
+38.73235119090361
+44.66731788002871
+50.585224727895806
+55.867617540818486
+61.13429676402699
+65.65506465932265
+70.27289476241657
+74.23563496186772
+ssim per frame: 0.86859596
+0.9310321
+0.91774833
+0.90455955
+0.89146197
+0.87753433
+0.86320466
+0.8475781
+0.83246034
+0.81711
+0.8032707
+psnr per frame: 19.491692
+22.110903
+21.318829
+20.594084
+19.972715
+19.449331
+19.00219
+18.594069
+18.252132
+17.939663
+17.683004
+lpips per frame: 0.09402808
+0.048115868
+0.05688854
+0.06431663
+0.07232716
+0.0818993
+0.09405954
+0.108113386
+0.12290868
+0.13885455
+0.15279713
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_55_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=5, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:34:16 test...
+mse per seq: 644.9066434595037
+34.78188731963622
+42.39554996286484
+50.49995310166303
+57.647459489139
+64.07191237791336
+69.83402981477626
+75.14760567160214
+79.40309398059539
+83.59786848588423
+87.5272832554292
+ssim per frame: 0.8472432
+0.9177182
+0.901221
+0.88475055
+0.8694752
+0.85460854
+0.8393347
+0.82327694
+0.8085518
+0.7936163
+0.7798785
+psnr per frame: 18.550343
+21.08204
+20.25445
+19.496906
+18.901396
+18.428368
+18.039457
+17.697693
+17.44311
+17.188314
+16.97171
+lpips per frame: 0.10828636
+0.059748232
+0.069677584
+0.07770981
+0.08630622
+0.096743286
+0.10905282
+0.122946694
+0.13844429
+0.1539128
+0.16832182
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_1010_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:37:42 test...
+mse per seq: 761.1479144733858
+40.683439219061704
+50.98398936878551
+60.97972152832357
+69.67186957374614
+77.22282928833987
+83.55719968214392
+88.74849404115727
+92.93759738697725
+96.62623204521954
+99.73654233963094
+ssim per frame: 0.82783586
+0.90748566
+0.886702
+0.8673672
+0.849783
+0.83294195
+0.8166785
+0.80077684
+0.78574383
+0.77166444
+0.75921535
+psnr per frame: 17.882755
+20.535717
+19.576712
+18.760334
+18.151546
+17.671242
+17.304459
+17.018063
+16.784678
+16.585026
+16.43979
+lpips per frame: 0.122934125
+0.06855583
+0.08073409
+0.09026755
+0.10003159
+0.111979246
+0.12455566
+0.14008035
+0.15530105
+0.17176135
+0.18607453
+
