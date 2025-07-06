@@ -1,0 +1,56 @@
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/random_end', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=0, layer_norm=0, lr=0.0001, max_iterations=80000, model_name='predrnn_v2', n_gpu=1, noise='random', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=5000, stride=1, test_interval=5000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+Initializing models
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:23:42 test...
+mse per seq: 492.93500229381624
+24.772625400420818
+30.313934713761437
+36.312578706180346
+41.70193401887455
+47.55468670952129
+52.8341021716276
+58.10445553988696
+62.5903765632507
+67.30490450935568
+71.44540396093684
+ssim per frame: 0.8736583
+0.93508476
+0.9221521
+0.9090922
+0.896861
+0.8828638
+0.8686091
+0.85293144
+0.83795345
+0.82255495
+0.8084801
+psnr per frame: 19.752085
+22.490944
+21.650856
+20.875912
+20.285284
+19.717995
+19.248741
+18.810871
+18.462027
+18.12664
+17.851564
+lpips per frame: 0.09113401
+0.045232106
+0.053826965
+0.061466586
+0.069192074
+0.07902689
+0.09112713
+0.105245434
+0.120061204
+0.13594101
+0.15022066

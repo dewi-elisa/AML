@@ -1,0 +1,229 @@
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: C:\Users\twank\anaconda3\envs\DewiAML\lib\site-packages\lpips\weights\v0.1\alex.pth
+Namespace(batch_size=8, conv_on_input=0, dataset_name='mnist', decouple_beta=0.1, device='cuda', display_interval=100, filter_size=5, gen_frm_dir='results_finetuning/blocks_1010', img_channel=1, img_width=64, injection_action='concat', input_length=10, is_training=1, layer_norm=0, lr=0.0001, max_iterations=8000, model_name='predrnn_v2', n_gpu=1, noise='blocks', noise_ratio=0.1, noise_size=10, num_action_ch=4, num_hidden='128,128,128,128', num_save_samples=10, parameters=['conv_last.weight'], patch_size=4, pretrained_model='./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks5', r_exp_alpha=2500, r_sampling_step_1=25000.0, r_sampling_step_2=50000, res_on_conv=0, reverse_input=1, reverse_scheduled_sampling=1, sampling_changing_rate=2e-05, sampling_start_value=1.0, sampling_stop_iter=50000, save_dir='checkpoints_finetuning/mnist_predrnn_v2', scheduled_sampling=1, snapshot_interval=10000, stride=1, test_interval=10000, total_length=20, train_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-train.npz', valid_data_paths='C:/Users/twank/Documents/Dewi/predrnn-pytorch-master/predrnn-pytorch-master/moving-mnist-example/moving-mnist-test.npz', visual=0, visual_path='./decoupling_visual')
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+clips
+(2, 10000, 2)
+dims
+(1, 3)
+input_raw_data
+(200000, 1, 64, 64)
+load model: ./checkpoints_finetuning/mnist_predrnn_v2/model.ckpt-8000-blocks5
+Updating 1 parameter(s): ['conv_last.weight']
+2025-07-06 09:31:55 itr: 100
+training loss: 0.027178559452295303
+2025-07-06 09:34:01 itr: 200
+training loss: 0.02804892510175705
+2025-07-06 09:36:07 itr: 300
+training loss: 0.02851065807044506
+2025-07-06 09:38:14 itr: 400
+training loss: 0.02874213457107544
+2025-07-06 09:40:20 itr: 500
+training loss: 0.028669973835349083
+2025-07-06 09:42:27 itr: 600
+training loss: 0.02740348130464554
+2025-07-06 09:44:33 itr: 700
+training loss: 0.028355609625577927
+2025-07-06 09:46:39 itr: 800
+training loss: 0.027228564023971558
+2025-07-06 09:48:44 itr: 900
+training loss: 0.029004119336605072
+2025-07-06 09:50:51 itr: 1000
+training loss: 0.026981759816408157
+2025-07-06 09:52:58 itr: 1100
+training loss: 0.026251396164298058
+2025-07-06 09:55:03 itr: 1200
+training loss: 0.02887784130871296
+2025-07-06 09:57:07 itr: 1300
+training loss: 0.028087904676795006
+2025-07-06 09:59:11 itr: 1400
+training loss: 0.027392089366912842
+2025-07-06 10:01:14 itr: 1500
+training loss: 0.02860340289771557
+2025-07-06 10:03:22 itr: 1600
+training loss: 0.026279088109731674
+2025-07-06 10:05:30 itr: 1700
+training loss: 0.026421237736940384
+2025-07-06 10:07:38 itr: 1800
+training loss: 0.028313441202044487
+2025-07-06 10:09:45 itr: 1900
+training loss: 0.026801520958542824
+2025-07-06 10:11:51 itr: 2000
+training loss: 0.027718402445316315
+2025-07-06 10:13:59 itr: 2100
+training loss: 0.027964074164628983
+2025-07-06 10:16:07 itr: 2200
+training loss: 0.02691073715686798
+2025-07-06 10:18:14 itr: 2300
+training loss: 0.02599862962961197
+2025-07-06 10:20:23 itr: 2400
+training loss: 0.027388401329517365
+2025-07-06 10:22:31 itr: 2500
+training loss: 0.02783602476119995
+2025-07-06 10:24:38 itr: 2600
+training loss: 0.02786795049905777
+2025-07-06 10:26:44 itr: 2700
+training loss: 0.02560262195765972
+2025-07-06 10:28:51 itr: 2800
+training loss: 0.028850801289081573
+2025-07-06 10:30:57 itr: 2900
+training loss: 0.027144793421030045
+2025-07-06 10:33:05 itr: 3000
+training loss: 0.025082271546125412
+2025-07-06 10:35:12 itr: 3100
+training loss: 0.02855817973613739
+2025-07-06 10:37:16 itr: 3200
+training loss: 0.02708328515291214
+2025-07-06 10:39:20 itr: 3300
+training loss: 0.028222285211086273
+2025-07-06 10:41:24 itr: 3400
+training loss: 0.029147334396839142
+2025-07-06 10:43:29 itr: 3500
+training loss: 0.028312496840953827
+2025-07-06 10:45:33 itr: 3600
+training loss: 0.027355529367923737
+2025-07-06 10:47:37 itr: 3700
+training loss: 0.028002282604575157
+2025-07-06 10:49:40 itr: 3800
+training loss: 0.026280397549271584
+2025-07-06 10:51:44 itr: 3900
+training loss: 0.026155829429626465
+2025-07-06 10:53:48 itr: 4000
+training loss: 0.027512529864907265
+2025-07-06 10:55:52 itr: 4100
+training loss: 0.028012864291667938
+2025-07-06 10:57:55 itr: 4200
+training loss: 0.027246538549661636
+2025-07-06 10:59:59 itr: 4300
+training loss: 0.028792785480618477
+2025-07-06 11:02:03 itr: 4400
+training loss: 0.027807345613837242
+2025-07-06 11:04:07 itr: 4500
+training loss: 0.02688877284526825
+2025-07-06 11:06:11 itr: 4600
+training loss: 0.027881436049938202
+2025-07-06 11:08:14 itr: 4700
+training loss: 0.029231641441583633
+2025-07-06 11:10:18 itr: 4800
+training loss: 0.026391495019197464
+2025-07-06 11:12:22 itr: 4900
+training loss: 0.02870074473321438
+2025-07-06 11:14:26 itr: 5000
+training loss: 0.029202226549386978
+2025-07-06 11:16:30 itr: 5100
+training loss: 0.028527792543172836
+2025-07-06 11:18:34 itr: 5200
+training loss: 0.027144405990839005
+2025-07-06 11:20:37 itr: 5300
+training loss: 0.02809983864426613
+2025-07-06 11:22:41 itr: 5400
+training loss: 0.026993978768587112
+2025-07-06 11:24:45 itr: 5500
+training loss: 0.02995135262608528
+2025-07-06 11:26:49 itr: 5600
+training loss: 0.026766924187541008
+2025-07-06 11:28:53 itr: 5700
+training loss: 0.03035876341164112
+2025-07-06 11:30:56 itr: 5800
+training loss: 0.027968186885118484
+2025-07-06 11:33:00 itr: 5900
+training loss: 0.02758561447262764
+2025-07-06 11:35:04 itr: 6000
+training loss: 0.027039319276809692
+2025-07-06 11:37:08 itr: 6100
+training loss: 0.02803719788789749
+2025-07-06 11:39:12 itr: 6200
+training loss: 0.028722669929265976
+2025-07-06 11:41:15 itr: 6300
+training loss: 0.02613258920609951
+2025-07-06 11:43:19 itr: 6400
+training loss: 0.030563723295927048
+2025-07-06 11:45:18 itr: 6500
+training loss: 0.029329555109143257
+2025-07-06 11:47:22 itr: 6600
+training loss: 0.026608875021338463
+2025-07-06 11:49:26 itr: 6700
+training loss: 0.02641746960580349
+2025-07-06 11:51:29 itr: 6800
+training loss: 0.026399772614240646
+2025-07-06 11:53:33 itr: 6900
+training loss: 0.028240816667675972
+2025-07-06 11:55:37 itr: 7000
+training loss: 0.02749663218855858
+2025-07-06 11:57:41 itr: 7100
+training loss: 0.0296782199293375
+2025-07-06 11:59:45 itr: 7200
+training loss: 0.027591010555624962
+2025-07-06 12:01:48 itr: 7300
+training loss: 0.025763550773262978
+2025-07-06 12:03:52 itr: 7400
+training loss: 0.026586955413222313
+2025-07-06 12:05:59 itr: 7500
+training loss: 0.02757292613387108
+2025-07-06 12:08:05 itr: 7600
+training loss: 0.025921352207660675
+2025-07-06 12:10:12 itr: 7700
+training loss: 0.0274689681828022
+2025-07-06 12:12:20 itr: 7800
+training loss: 0.026061715558171272
+2025-07-06 12:14:28 itr: 7900
+training loss: 0.026457857340574265
+2025-07-06 12:16:35 itr: 8000
+training loss: 0.026298686861991882
+save model to checkpoints_finetuning/mnist_predrnn_v2\model.ckpt-8000-blocks10
+clips
+(2, 3000, 2)
+dims
+(1, 3)
+input_raw_data
+(60000, 1, 64, 64)
+2025-07-06 12:16:39 test...
+mse per seq: 757.6327973534079
+40.520554328347274
+50.9344807436122
+60.86879735324472
+69.25714645793731
+76.95321844988328
+82.986073550056
+88.16412024064498
+92.43139993188215
+96.19252163076146
+99.32448466703853
+ssim per frame: 0.82845527
+0.9078917
+0.8868955
+0.8675802
+0.85055095
+0.8334362
+0.8175345
+0.8016785
+0.78684086
+0.7724485
+0.7596964
+psnr per frame: 17.912151
+20.577845
+19.592733
+18.777206
+18.192888
+17.701591
+17.353836
+17.045229
+16.81856
+16.610153
+16.451464
+lpips per frame: 0.12221161
+0.068206415
+0.080082566
+0.09001419
+0.099303626
+0.110868804
+0.12393879
+0.13908675
+0.1540535
+0.17124783
+0.18531367
